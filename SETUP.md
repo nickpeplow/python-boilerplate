@@ -13,3 +13,7 @@ pip install -r boilerplate/requirements.txt
 python3 app.py
 
 flask db init
+
+--
+
+Menu is in project/config.py
