@@ -1,0 +1,4 @@
+-r base.txt
+
+# Production Dependencies
+gunicorn==21.2.0 

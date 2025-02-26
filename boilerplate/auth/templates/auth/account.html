@@ -1,0 +1,102 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Account Settings{% endblock %}
+
+{% block page_header_title %}Account Settings{% endblock %}
+{% block page_header_description %}Manage your account details and security{% endblock %}
+
+{% block content %}
+<div class="flex justify-center -mt-6">
+    <div class="w-full">
+        <!-- Email Section -->
+        <form method="POST" class="flex flex-col [&>*+*]:mt-6">
+            {{ form.csrf_token }}
+            <input type="hidden" name="action" value="update_profile">
+            <div class="border rounded-lg w-full">
+                <div class="border-b px-4 py-3">
+                    <h3 class="font-medium">Profile Information</h3>
+                </div>
+                <div class="p-4 space-y-4">
+                    <div>
+                        <label class="text-sm font-medium">{{ form.first_name.label }}</label>
+                        {{ form.first_name(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                        {% if form.first_name.errors %}
+                            {% for error in form.first_name.errors %}
+                                <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium">{{ form.last_name.label }}</label>
+                        {{ form.last_name(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                        {% if form.last_name.errors %}
+                            {% for error in form.last_name.errors %}
+                                <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium">{{ form.email.label }}</label>
+                        {{ form.email(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                        {% if form.email.errors %}
+                            {% for error in form.email.errors %}
+                                <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="mt-4">
+                        <button type="submit" class="rounded bg-blue-600 px-3 py-1.5 text-sm text-white">
+                            Update Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Password Section -->
+        <form method="POST" class="flex flex-col mt-6">
+            {{ form.csrf_token }}
+            <input type="hidden" name="action" value="change_password">
+            <div class="border rounded-lg w-full">
+                <div class="border-b px-4 py-3">
+                    <h3 class="font-medium">Change Password</h3>
+                </div>
+                <div class="p-4 space-y-4">
+                    <div>
+                        <label class="text-sm font-medium">{{ form.current_password.label }}</label>
+                        {{ form.current_password(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                        {% if form.current_password.errors %}
+                            {% for error in form.current_password.errors %}
+                                <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium">{{ form.new_password.label }}</label>
+                        {{ form.new_password(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                        {% if form.new_password.errors %}
+                            {% for error in form.new_password.errors %}
+                                <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div>
+                        <label class="text-sm font-medium">{{ form.confirm_password.label }}</label>
+                        {{ form.confirm_password(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                        {% if form.confirm_password.errors %}
+                            {% for error in form.confirm_password.errors %}
+                                <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class="mt-4">
+                        <button type="submit" class="rounded bg-blue-600 px-3 py-1.5 text-sm text-white">
+                            Change Password
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %} 

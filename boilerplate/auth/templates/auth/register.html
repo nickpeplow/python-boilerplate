@@ -1,0 +1,67 @@
+{% extends "layouts/base_form.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block page_header_title %}Create an account{% endblock %}
+{% block page_header_description %}Enter your details to create your account{% endblock %}
+
+{% block content %}
+<div class="flex justify-center">
+    <div class="w-full max-w-sm">
+        <form method="POST" class="flex flex-col space-y-4">
+            {{ form.csrf_token }}
+            <div>
+                <label class="text-sm font-medium">{{ form.first_name.label }}</label>
+                {{ form.first_name(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                {% if form.first_name.errors %}
+                    {% for error in form.first_name.errors %}
+                        <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div>
+                <label class="text-sm font-medium">{{ form.last_name.label }}</label>
+                {{ form.last_name(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                {% if form.last_name.errors %}
+                    {% for error in form.last_name.errors %}
+                        <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div>
+                <label class="text-sm font-medium">{{ form.email.label }}</label>
+                {{ form.email(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                        <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div>
+                <label class="text-sm font-medium">{{ form.password.label }}</label>
+                {{ form.password(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                {% if form.password.errors %}
+                    {% for error in form.password.errors %}
+                        <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div>
+                <label class="text-sm font-medium">{{ form.password2.label }}</label>
+                {{ form.password2(class="mt-1 w-full rounded border px-3 py-1.5 text-sm") }}
+                {% if form.password2.errors %}
+                    {% for error in form.password2.errors %}
+                        <div class="mt-1 text-sm text-red-600">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {{ form.submit(class="rounded bg-blue-600 px-3 py-1.5 text-sm text-white") }}
+        </form>
+
+        <p class="mt-6 text-sm text-gray-500">
+            Already have an account? 
+            <a href="{{ url_for('auth.login') }}" class="text-blue-600">Login</a>
+        </p>
+    </div>
+</div>
+{% endblock %} 

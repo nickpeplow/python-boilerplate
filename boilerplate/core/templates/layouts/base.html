@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdn.datatables.net/1.13.7/css/dataTables.tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
+<body>
+    <!-- Nav -->
+    <div class="border-b">
+        {% include 'components/nav.html' %}
+    </div>
+    
+    <!-- Page Header -->
+    <div class="border-b">
+        <div class="mx-auto max-w-[1280px] w-full px-4">
+            <div class="flex items-center justify-between py-6">
+                <div>
+                    <h1 class="text-2xl font-bold">{% block page_header_title %}{% endblock %}</h1>
+                    <p class="text-sm text-gray-500 hidden sm:block">{% block page_header_description %}{% endblock %}</p>
+                    {% include 'components/flash_messages.html' %}
+                </div>
+                {% block page_header_actions %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="mx-auto max-w-[1280px] w-full px-4">
+        <section class="content-section py-6">
+            {% block layout %}
+            <div class="flex flex-col md:grid md:grid-cols-[240px_1fr] gap-3 md:gap-6">
+                <!-- Sidebar -->
+                <aside class="border-b md:border-b-0">
+                    {% block sidebar %}
+                        {% include 'components/sidebar.html' %}
+                    {% endblock %}
+                </aside>
+
+                <!-- Main Content -->
+                <main>
+                    {% block content %}{% endblock %}
+                </main>
+            </div>
+            {% endblock %}
+        </section>
+    </div>
+</body>
+</html> 

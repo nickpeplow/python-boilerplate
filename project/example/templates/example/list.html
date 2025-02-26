@@ -1,0 +1,68 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Examples{% endblock %}
+
+{% block page_header_title %}Examples{% endblock %}
+{% block page_header_description %}Manage your examples{% endblock %}
+{% block page_header_actions %}
+    <a href="{{ url_for('example.manage') }}" class="rounded bg-blue-600 px-3 py-1.5 text-sm text-white">
+        Add Example
+    </a>
+{% endblock %}
+
+{% block content %}
+<div class="flex flex-col space-y-4">
+    <div class="flex justify-between items-center">
+        <h2 class="text-lg font-semibold">All examples</h2>
+    </div>
+
+    <div class="border rounded-lg bg-white">
+        <div class="p-4">
+            <table id="examplesTable" class="w-full">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-4 py-3 text-left text-sm font-medium text-gray-500">Name</th>
+                        <th class="px-4 py-3 text-left text-sm font-medium text-gray-500">Description</th>
+                        <th class="px-4 py-3 text-left text-sm font-medium text-gray-500">Status</th>
+                        <th class="px-4 py-3 text-right text-sm font-medium text-gray-500">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    {% for example in examples %}
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-4 py-3 text-sm">{{ example.name }}</td>
+                        <td class="px-4 py-3 text-sm">{{ example.description or 'No description' }}</td>
+                        <td class="px-4 py-3 text-sm">
+                            <span class="rounded-full bg-green-50 px-2 py-1 text-xs text-green-700">{{ example.status }}</span>
+                        </td>
+                        <td class="px-4 py-3 text-sm text-right">
+                            <a href="{{ url_for('example.details', example_id=example.id) }}" 
+                               class="text-blue-600 hover:underline">View</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#examplesTable').DataTable({
+        paging: false,
+        dom: '<"flex items-center justify-between mb-4"f>rt',
+        language: {
+            search: "Search examples:",
+            info: "",
+            infoEmpty: "",
+            infoFiltered: ""
+        },
+        drawCallback: function() {
+            $('.dataTables_filter input').addClass('rounded border px-3 py-1.5 text-sm ml-2');
+            $('.dataTables_filter label').addClass('text-sm text-gray-500');
+        }
+    });
+});
+</script>
+{% endblock %} 

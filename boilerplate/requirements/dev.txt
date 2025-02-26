@@ -1,0 +1,7 @@
+-r base.txt
+
+# Development Tools
+pytest==7.4.0
+pytest-flask==1.2.0
+flake8==6.1.0
+black==23.7.0 
