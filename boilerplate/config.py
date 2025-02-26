@@ -11,20 +11,3 @@ class Config:
     # Security
     SECRET_KEY = SECRET_KEY
     
-    # Navigation Menu
-    NAVIGATION = [
-        {
-            'name': 'Sites',
-            'url': 'sites.list',
-            'active_route': 'sites'
-        },
-        {
-            'name': 'Pages',
-            'url': '#',
-            'active_route': 'pages'
-        },
-        # ... other menu items ...
-    ] 
-    
-    OPENROUTER_API_KEY = os.environ.get('OPENROUTER_API_KEY')
-    OPENROUTER_SITE_URL = os.environ.get('OPENROUTER_SITE_URL', 'https://github.com/nickpeplow/ss-content-writer') 
