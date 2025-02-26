@@ -1,4 +1,6 @@
-git remote add -f np-boilerplate https://github.com/nickpeplow/python-boilerplate.git
+git remote add -f main https://github.com/nickpeplow/python-boilerplate.git
+
+git pull main main
 
 # Create a new virtual environment
 python3 -m venv fresh_venv
