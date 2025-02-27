@@ -17,3 +17,6 @@ flask db init
 --
 
 Menu is in project/config.py
+
+Heroku
+heroku ps:scale web=1 -a np-attribution
