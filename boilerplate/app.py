@@ -13,7 +13,7 @@ Projects should import create_base_app() and extend it with
 their own configuration and blueprints.
 """
 
-from flask import Flask
+from flask import Flask, send_from_directory, jsonify
 from flask_login import LoginManager
 from flask_wtf.csrf import CSRFProtect
 from .config import Config
@@ -22,6 +22,7 @@ from .auth.models import User
 from .auth import auth_bp
 from .core import core_bp
 import logging
+import os
 
 def create_base_app():
     app = Flask(__name__)
@@ -52,5 +53,25 @@ def create_base_app():
     # Register core blueprints
     app.register_blueprint(core_bp)
     app.register_blueprint(auth_bp)
+
+    # Add CSS serving route with absolute path
+    @app.route('/static/dist/css/<path:filename>')
+    def serve_css(filename):
+        # Get the absolute path to the static directory from the root of the project
+        static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'static', 'dist', 'css'))
+        app.logger.info(f"Looking for CSS file {filename} in directory {static_dir}")
+        return send_from_directory(static_dir, filename)
+    
+    # Create a debug route to verify paths
+    @app.route('/debug-static-paths')
+    def debug_static_paths():
+        paths = {
+            'current_dir': os.getcwd(),
+            'file_dir': os.path.dirname(__file__),
+            'static_dir': os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'static')),
+            'css_path': os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'static', 'dist', 'css')),
+            'file_exists': os.path.exists(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'static', 'dist', 'css', 'main.css')))
+        }
+        return jsonify(paths)
 
     return app 
