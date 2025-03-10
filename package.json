@@ -1,0 +1,40 @@
+{
+  "description": "A boilerplate Flask application with authentication, database, and project-specific code.",
+  "main": "tailwind.config.js",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "browserslist": "^4.24.4",
+    "caniuse-lite": "^1.0.30001703",
+    "electron-to-chromium": "^1.5.114",
+    "escalade": "^3.2.0",
+    "fraction.js": "^4.3.7",
+    "nanoid": "^3.3.9",
+    "node-releases": "^2.0.19",
+    "normalize-range": "^0.1.2",
+    "picocolors": "^1.1.1",
+    "postcss-value-parser": "^4.2.0",
+    "source-map-js": "^1.2.1",
+    "update-browserslist-db": "^1.1.3"
+  },
+  "scripts": {
+    "tailwind:init": "tailwindcss init -p",
+    "dev": "tailwindcss -i ./static/src/css/main.css -o ./static/dist/css/main.css --watch",
+    "build": "tailwindcss -i ./static/src/css/main.css -o ./static/dist/css/main.css --minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickpeplow/python-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickpeplow/python-boilerplate/issues"
+  },
+  "homepage": "https://github.com/nickpeplow/python-boilerplate#readme"
+}

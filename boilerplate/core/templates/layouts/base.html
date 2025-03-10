@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Dashboard{% endblock %}</title>
     
-    <!-- Tailwind CSS - Prebuilt version -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-    
+    <!-- Tailwind CSS - Compiled version -->
+    <link href="{{ url_for('static', filename='dist/css/main.css') }}" rel="stylesheet">
+
+
     <!-- Other resources -->
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.tailwind.min.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
