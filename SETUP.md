@@ -29,7 +29,7 @@ heroku ps:scale web=1 -a np-attribution
    - Or use a package manager: `brew install node` (macOS), `apt install nodejs npm` (Ubuntu)
 
 2. Install Tailwind CSS and its dependencies:
-   ```bash
+   ```bashÙ
    # Make sure you're in the project root
    npm install
    ```
