@@ -171,4 +171,5 @@ cython_debug/
 .pypirc
 /node_modules
 
+# Virtual environment
 fresh_venv/
