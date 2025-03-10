@@ -2,7 +2,7 @@
     <div class="mx-auto max-w-[1280px] w-full px-4">
         <header class="flex h-16 items-center" x-data="{ mobileMenuOpen: false }">
             <div class="flex-1 flex items-center space-x-4">
-                <a href="{{ url_for('example.list') }}" class="text-lg font-bold text-blue-600 pr-16">{{ config['APP_NAME'] }}</a>
+                <a href="#" class="text-lg font-bold text-blue-600 pr-16">{{ config['APP_NAME'] }}</a>
                 {% if current_user.is_authenticated %}
                 <nav class="hidden md:flex space-x-6 text-base">
                     {% for item in config['NAVIGATION'] %}
